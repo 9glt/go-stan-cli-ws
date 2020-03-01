@@ -23,7 +23,7 @@ func New(ws, n, cluster, client string) (*MQ, error) {
 		return nil, err
 	}
 	sc, err := stan.Connect(cluster, client, stan.NatsConn(nc))
-	return &MQ{&sc}, err
+	return &MQ{sc}, err
 }
 
 type customDialer struct {
@@ -41,9 +41,9 @@ func (cd *customDialer) Dial(network, address string) (net.Conn, error) {
 }
 
 type MQ struct {
-	conn *stan.Conn
+	conn stan.Conn
 }
 
-func (mq *MQ) UnderlyingConn() *stan.Conn {
+func (mq *MQ) UnderlyingConn() stan.Conn {
 	return mq.conn
 }
