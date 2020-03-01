@@ -5,7 +5,7 @@ Go nats.io client via websockets proxy
 package main
 
 import (
-    mqs "github.com/9glt/go-nats-cli-ws"
+    mqs "github.com/9glt/go-stan-cli-ws"
     stan "github.com/nats-io/stan.go"
 )
 
