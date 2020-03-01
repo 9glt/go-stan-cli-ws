@@ -22,7 +22,7 @@ func New(ws, n, cluster, client string) (*MQ, error) {
 	if err != nil {
 		return nil, err
 	}
-	sc, err := stan.Connect(cluster, client, stan.NatsConn(nc))
+	sc, err := stan.Connect(cluster, client, stan.NatsConn(nc), stan.PubAckWait(3*time.Second))
 	return &MQ{sc}, err
 }
 
